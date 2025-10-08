@@ -77,5 +77,5 @@ if __name__ == "__main__":
 
 # Note: Your output will be different. Your output will change from run to run. That’s the fun part of working with threads!
 
-# As the program starts to wrap up, can you see the main thread generating the event which causes the producer to exit immediately. T
-# he consumer still has a bunch of work do to, so it keeps running until it has cleaned out the pipeline
+# As the program starts to wrap up, can you see the main thread generating the event which causes the producer to exit immediately. 
+# The consumer still has a bunch of work do to, so it keeps running until it has cleaned out the pipeline
