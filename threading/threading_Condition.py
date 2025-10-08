@@ -36,7 +36,7 @@ def producer():
         item = "New item"
         shared_resource.append(item)
         print("Producer produced item:", item)
-        #condition.notify()
+        condition.notify()
 
 
 if __name__ == "__main__":
