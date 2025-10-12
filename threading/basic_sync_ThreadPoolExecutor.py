@@ -2,14 +2,14 @@
 
 import time
 import concurrent.futures
-    
-start = time.perf_counter()  
+     
 
 def do_something(seconds):
     print(f'Sleeping {seconds} second(s)...')
     time.sleep(seconds)
     return f'Done Sleeping...{seconds} second(s)'
 
+start = time.perf_counter() 
 
 # ThreadPoolExecutor is an Executor subclass that uses a pool of threads to execute calls asynchronously.
 # All threads enqueued to ThreadPoolExecutor will be "joined" before the interpreter can exit.
@@ -18,6 +18,12 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
                                           # the result of an asynchronous computation. submit() method 
                                           # submits each function one at a time
     print(f1.result())
+
+finish = time.perf_counter()
+
+print(f'\nFinished in {round(finish-start, 2)} second(s)')
+
+start = time.perf_counter()  
 
 # starting 10 threads
 with concurrent.futures.ThreadPoolExecutor() as executor:
@@ -28,6 +34,12 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
     # instead of completion. Check next block for further testing
     for future in concurrent.futures.as_completed(results):
         print(future.result())
+
+finish = time.perf_counter()
+
+print(f'\nFinished in {round(finish-start, 2)} second(s)')
+
+start = time.perf_counter()  
 
 # starting 5 threads with different sleep times
 with concurrent.futures.ThreadPoolExecutor() as executor:
@@ -53,6 +65,12 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
     for future in concurrent.futures.as_completed(results):
         print(future.result())
 
+finish = time.perf_counter()
+
+print(f'\nFinished in {round(finish-start, 2)} second(s)')
+
+start = time.perf_counter()  
+
 # using map() instead of submit()
 with concurrent.futures.ThreadPoolExecutor() as executor:
     secs = [5, 4, 3, 2, 1]
@@ -62,4 +80,4 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
 
 finish = time.perf_counter()
 
-print(f'Finished in {round(finish-start, 2)} second(s)')
+print(f'\nFinished in {round(finish-start, 2)} second(s)')
