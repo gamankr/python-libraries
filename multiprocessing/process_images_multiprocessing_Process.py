@@ -42,6 +42,14 @@ with concurrent.futures.ProcessPoolExecutor() as executor:
 
 t3 = time.perf_counter()
 
+# Since this program involves reading and saving images, it also has I/O bound processes.
+# So, threading will also give good results. Perhahps better than multiprocessing in this case.
+with concurrent.futures.ThreadPoolExecutor() as executor:
+    executor.map(process_image, img_names)
+
+t4 = time.perf_counter()
+
 print(f'\nFinished WITHOUT multiprocessing in {t2-t1} seconds')
 print(f'\nFinished WITH multiprocessing in {t3-t2} seconds')
+print(f'\nFinished WITH threading in {t4-t3} seconds')
 
